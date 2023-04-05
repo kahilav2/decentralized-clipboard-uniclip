@@ -1,0 +1,52 @@
+{
+  "name": "uniclip",
+  "productName": "uniclip",
+  "appId": "com.kahilav2.uniclip",
+  "version": "1.0.0-alpha.6",
+  "description": "Uniclip shares your clipboard between multiple devices using decentralized technologies.",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "npm run clean && npm run compile-ts && npm run build-timestamp && npm run copy-files",
+    "compile-ts": "tsc",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 \"./src/**/*.html\" dist/ && copyfiles -u 1 \"src/**/*.js\" dist/ && copyfiles -u 1 \"src/**/*.css\" dist/",
+    "start": "npm run build && electron .",
+    "build-timestamp": "node -e \"require('fs').writeFileSync('dist/build_timestamp', new Date().toLocaleString())\"",
+    "package": "rimraf release/ && npm run build && electron-builder",
+    "publish": "echo todo",
+    "prettier-format": "prettier --config .prettierrc --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx,json,css}\" --write",
+    "lint": "eslint src/"
+  },
+  "keywords": [],
+  "author": {
+    "name": "kahilav2",
+    "email": "kahilav4@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async-lock": "^1.4.0",
+    "await-lock": "^2.2.2",
+    "bluebird": "^3.7.2",
+    "electron-log": "^5.0.0-beta.16",
+    "electron-squirrel-startup": "^1.0.0",
+    "readable-stream": "^3.6.2",
+    "streamr-chunker": "^0.1.1-beta.1",
+    "streamr-client": "^8.0.4"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.38",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "copyfiles": "^2.4.1",
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.4.0",
+    "typescript": "^4.9.5"
+  },
+  "optionalDependencies": {
+    "dmg-license": "^1.0.11"
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Using your shared clipboard</title>
+	<link rel="stylesheet" href="../setup/styles.css">
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<style>
+    html, body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	#qr_code {
+		margin-bottom: 40px;
+	}
+	.container {
+		padding: 8px;
+		display: flex;
+		flex-flow: column;
+	}
+	</style>
+</head>
+<body>
+	<h2 class="ml-2">Using your decentralized clipboard</h2>
+	<p class="ml-2 mb-2">Once you have connected with the other devices, you may start using the decentralized clipboard.</p>
+    <p class="ml-2 mb-2">
+        You can access Uniclip from the task bar. Click the Uniclip icon to open the menu.
+    </p>
+	<h3 class="ml-2 mb-1">Copying and pasting</h3>
+	<p class="ml-2 mb-2">
+        To copy to your clipboard, copy any text, image or file. By default, whatever you copied will be sent over to your other devices. However, if you want to manually control when your clipboard is sent over, you can switch the sync mode from <i>automatic</i> to <i>manual</i>. In manual mode, you can send your clipboard over to your other devices by clicking the <b>Send</b> button in the menu.
+
+        Your other devices will receive the clipboard data and put it into their clipboard. You can then paste the data from your other devices.
+	</p>
+    <h3 class="ml-2 mb-1">Storage</h3>
+    <p class="ml-2 mb-2">
+        By default, Uniclip receives data at the time that it is copied. However, if you want to receive data that was sent in the past, you can switch storage on in the settings. This will allow you to receive data that was sent to you while you were offline. This is done through a Polygon transaction and requires a small amount of MATIC for network fees.
+    </p>
+    <h3 class="ml-2 mb-1">Do I need MATIC to use Uniclip?</h3>
+    <p class="ml-2 mb-2">
+        No, you do not need MATIC to use Uniclip once you have created the stream. Using Streamr Network is currently free. You may copy and paste as much as you like (within Streamr Network's limits) for free. However, if you want to activate the storage feature, you will need to have some MATIC in your wallet.
+    </p>
+
+	<script>
+        window.onload = async ()=> {
+            const config = await window.uniclip.getConfig();
+			document.getElementById('privateKey').value = config.privateKey;
+			document.getElementById('streamUrl').value = config.streamUrl;
+            var qrCode = new QRCode("qr_code");
+		    qrCode.makeCode(JSON.stringify({ k: config.privateKey, id: config.streamId }));
+        }
+	</script>
+</body>
+</html>

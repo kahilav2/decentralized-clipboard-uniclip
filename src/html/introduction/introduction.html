@@ -1,0 +1,25 @@
+<!-- intro.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+  </head>
+  <body>
+    <h1><img style="width: 50px;" src="../../../assets/icon_color.png"> Welcome to the future of data sharing</h1>
+    <p>Uniclip is a powerful tool for syncing your clipboard between multiple devices. It doesn't rely on connecting directly via IP, which can be troublesome and time consuming. And instead of sharing your data with large companies like Google, Amazon, Apple, Uniclip uses a decentralized network that is owned by its' users. Uniclip resorts on the security and privacy of the Streamr Network. By end to end encrypting your data, the Streamr Network offers a higher level of security for your clipboard data compared to many other alternatives.</p>
+    <p>Next, we are going to set up your decentralized clipboard. </p>
+    <p><button id="next-button">Next</button></p>
+
+    <script>
+      const nextButton = document.getElementById('next-button')
+
+      nextButton.addEventListener('click', () => {
+        window.uniclip.finish()
+      })
+    </script>
+  </body>
+</html>
+

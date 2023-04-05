@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Connect to a device</title>
+	<link rel="stylesheet" href="../setup/styles.css">
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<style>
+    html, body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	#qr_code {
+		margin-bottom: 40px;
+	}
+	.container {
+		padding: 8px;
+		display: flex;
+		flex-flow: column;
+	}
+	</style>
+</head>
+<body>
+	<h2 class="ml-2">Connect to a device</h2>
+	<p class="ml-2 mb-2">To share your clipboard with another device, you need to set it up with the instructions below. You only need to do this once for each device.</p>
+	<h3 class="ml-2">Desktop (Windows, MacOS, Linux)</h3>
+	<ul class="ml-2"> 
+		<li>Download desktop version at <a href="https://uniclip.app" target="_blank">uniclip.app</a></li>
+		<li>When setting it up, choose <b>"Existing user"</b>, scan the QR code below or manually transfer <b>private key</b> and <b>stream address</b> from below to your second device.</li>
+	</ul>
+	<p class="ml-2">
+		<label><b>Private key:</b></label>
+		<input type="text" id="privateKey" disabled />
+	</p>
+	<p class="ml-2">
+		<label><b>Stream address:</b></label>
+		<input type="text" id="streamUrl" disabled />
+	</p>
+	<br>
+	<h3 class="ml-2 mb-1">Iphone, Android phones & Tablet devices</h3>
+	<p class="ml-2">Mobile devices can use the web version of Uniclip.</p>
+	<ul class="ml-2"> 
+		<li>Open your browser and go to <a href="https://uniclip.app/web" target="_blank">uniclip.app/web</a></li>
+		<li><i>(Optional)</i> Save the app on your desktop, close the browser and open the app from the phone's desktop</li>
+		<li>Click <b>"Set up"</b> and scan the QR code below. After it has connected, you are good to go.</li>
+	</ul>
+	<div class="container mb-2">
+		<h2>QR code for sharing private key with another device</h2>
+		<div class="qr_code" id="qr_code"></div>
+	</div>
+	<script>
+        window.onload = async ()=> {
+            const config = await window.uniclip.getConfig();
+			document.getElementById('privateKey').value = config.privateKey;
+			document.getElementById('streamUrl').value = config.streamUrl;
+            var qrCode = new QRCode("qr_code");
+		    qrCode.makeCode(JSON.stringify({ k: config.privateKey, id: config.streamId }));
+        }
+	</script>
+</body>
+</html>

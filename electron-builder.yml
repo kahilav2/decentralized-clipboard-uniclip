@@ -1,0 +1,26 @@
+appId: com.kahilav2.uniclip
+productName: Uniclip
+directories:
+  output: release
+linux:
+  icon: ./assets/icon2_black_large_512x512.png
+  category: Utility
+mac:
+  target: dmg
+  icon: ./assets/icon.icns
+  category: public.app-category.productivity
+  entitlements: entitlements.mac.plist
+  extendInfo:
+    NSCameraUsageDescription: "This app requires access to the camera for scanning QR codes."
+    com.apple.security.device.camera: true
+win:
+  icon: ./assets/icon.ico
+  target:
+    - nsis
+files: [
+  dist/**/*,
+  package.json,
+  dist/app.js,
+  assets/**,
+]
+
