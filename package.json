@@ -2,7 +2,7 @@
   "name": "uniclip",
   "productName": "uniclip",
   "appId": "com.kahilav2.uniclip",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-beta.0",
   "description": "Uniclip shares your clipboard between multiple devices using decentralized technologies.",
   "main": "dist/app.js",
   "scripts": {
