@@ -46,14 +46,16 @@ class StreamrConnectionController extends EventEmitter {
   }
 
   public async publish(message: object) {
-    const str = JSON.stringify(message);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     if (!this.isConnected) {
       throw new NotReadyError('publish called while not connected');
     }
     if (!this.streamrCli) {
       throw new NotReadyError('streamrCli is destroyed');
     }
+    // FOR THOSE DEBUGGING: here we just call streamrCli
+    log.debug("streamUrl", this.streamUrl)
+    const msgStr = JSON.stringify(message)
+    log.debug("length:", msgStr.length, "contents:", msgStr.substring(0,30) + "..." + msgStr.substring(msgStr.length-30))
     await this.streamrCli.publish(this.streamUrl, message);
   }
 
@@ -76,6 +78,7 @@ class StreamrConnectionController extends EventEmitter {
     while (!this.isConnected && !this.haltConnecting && !timeoutTracker.timedOut()) {
       log.debug(this.id, 'Connecting...', this.privateKey, this.streamUrl);
       try {
+        // FOR THOSE DEBUGGING: Initialize with webrtcMaxMessageSize
         this.streamrCli = new StreamrClient({
           auth: {
             privateKey: this.privateKey

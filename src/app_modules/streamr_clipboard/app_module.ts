@@ -309,9 +309,15 @@ class StreamrClipboard extends EventEmitter implements AppModule {
     if (!this.configured || !isMessage(msg)) return; //TODO: remove this variable?
     if (this.configContr && this.configContr.isSyncModeAutomatic()) {
       try {
-        if (this.messageContr) {
-          await this.messageContr.upload(msg);
-        }
+        // FOR THOSE DEBUGGING: This is where the debugging starts
+        // This part is called when your clipboard contents have changed
+        // Skip normal app behavior
+        // await this.messageContr?.upload(msg);
+        // Instead, directly send a large message 
+        log.debug("debug the problem by calling publish directly");
+        this.connectionContr?.publish({
+          key: "a".repeat(500000)
+        })
       } catch (err) {
         log.error(err);
       }
