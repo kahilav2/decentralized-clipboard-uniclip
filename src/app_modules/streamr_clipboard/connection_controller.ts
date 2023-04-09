@@ -100,6 +100,8 @@ class StreamrConnectionController extends EventEmitter {
           },
           (msg: any) => {
             log.debug('conn inside message received', JSON.stringify(msg).substring(0, 100));
+            const msgStr = JSON.stringify(msg)
+            log.debug("Received message:", "length:", msgStr.length, "contents:", msgStr.substring(0,30) + "..." + msgStr.substring(msgStr.length-30))        
             this.emit('message', msg);
           }
         );

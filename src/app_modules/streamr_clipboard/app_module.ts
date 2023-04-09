@@ -315,9 +315,15 @@ class StreamrClipboard extends EventEmitter implements AppModule {
         // await this.messageContr?.upload(msg);
         // Instead, directly send a large message 
         log.debug("debug the problem by calling publish directly");
+        // FOR THOSE DEBUGGING: The contradiction is, the following message should be 
+        // enough since we initialized streamrCli with webrtcMaxMessageSize: 1048576
         this.connectionContr?.publish({
-          key: "a".repeat(500000)
+          b: ["id", { type: "text", body: "a".repeat(200000)}]
         })
+        // This is also fine, but won't be rendered in the web client (but is console.logged when received)
+        // this.connectionContr?.publish({
+        //   key: "a".repeat(200000)
+        // })
       } catch (err) {
         log.error(err);
       }
