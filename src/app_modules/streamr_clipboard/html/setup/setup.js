@@ -117,7 +117,7 @@ export default {
               <h4 class="ml-2">Step 1 / 3: Wallet creation</h4>
             </div>
             <div class="card-body">
-              <p>First, to be able to share your clipboard data over the internet, we need to create a Streamr stream, which transports your data encrypted (when set so!). Stream Network uses Polygon for authentication, therefore we need to create a Polygon wallet. A wallet may contain crypto assets, which are controlled with a private key. Anyone with the private key can access the funds or act on behalf of the wallet.</p>
+              <p>First, to be able to share your clipboard data over the internet, we need to create a Streamr stream, which transports your data encrypted (when set so!). Stream Network uses Polygon for authentication, therefore we need to create a Polygon wallet. A wallet may contain crypto assets, which are controlled with a private key. Anyone with the private key can access the funds or act on behalf of the wallet. If you have problems setting up the wallet, you can also register a stream at <a href="https://streamr.network/core" target="_blank">Streamr Core</a>. </p>
               <br>
               <p>Create a new wallet below by pressing the generate button.</p>
               <br>
