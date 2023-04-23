@@ -47,7 +47,6 @@ class StreamrConnectionController extends EventEmitter {
 
   public async publish(message: object) {
     const str = JSON.stringify(message);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     if (!this.isConnected) {
       throw new NotReadyError('publish called while not connected');
     }
