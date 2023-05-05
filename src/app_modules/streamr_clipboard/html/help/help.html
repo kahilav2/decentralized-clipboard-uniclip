@@ -43,13 +43,6 @@
     </p>
 
 	<script>
-        window.onload = async ()=> {
-            const config = await window.uniclip.getConfig();
-			document.getElementById('privateKey').value = config.privateKey;
-			document.getElementById('streamUrl').value = config.streamUrl;
-            var qrCode = new QRCode("qr_code");
-		    qrCode.makeCode(JSON.stringify({ k: config.privateKey, id: config.streamId }));
-        }
 	</script>
 </body>
 </html>

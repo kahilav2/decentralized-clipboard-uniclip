@@ -192,7 +192,6 @@ class StreamrClipboard extends EventEmitter implements AppModule {
       icon: path.join(__dirname, '..', '..', '..', 'assets', 'icon_color.png'),
       webPreferences: {
         nodeIntegration: true,
-        preload: path.join(__dirname, 'html', 'help', 'preload.js')
       }
     });
     window.webContents.setWindowOpenHandler(({ url }) => {
