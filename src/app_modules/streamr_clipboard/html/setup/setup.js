@@ -367,7 +367,12 @@ export default {
       const config = JSON.parse(code.data);
       canvas.hidden = true;
       this.privateKey = config.k;
-      const addr = await this.getStreamrCli().getAddress();
+      const throwawayCli = new StreamrClient({
+          auth: {
+            privateKey: config.k
+          }
+        })
+      const addr = await throwawayCli.getAddress();
       this.streamUrl = addr + '/' + config.id;
       this.errorMessages = [];
     },
