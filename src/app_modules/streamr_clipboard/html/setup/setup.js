@@ -528,7 +528,7 @@ export default {
       const { address: publicAddress, privateKey } = StreamrClient.generateEthereumAccount();
       this.privateKey = privateKey;
       this.publicAddress = publicAddress;
-      this.streamUrl = this.publicAddress + '/' + 'appname';
+      this.streamUrl = this.publicAddress + '/' + 'uniclip';
     },
     onEditModePressed() {
       this.streamUrlEditMode = !this.streamUrlEditMode;
