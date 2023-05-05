@@ -542,7 +542,6 @@ export default {
         this.checkIfStreamExists();
       }
     },
-    onSubmit() {},
     finish(mode) {
       const isValid = this.privateKey !== '' && this.streamUrl !== '';
 
